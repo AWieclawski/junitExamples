@@ -1,3 +1,4 @@
+import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import test2.FizzBuzz;
 
@@ -38,11 +39,27 @@ public class AssertjFizzBuzzTest {
     }
 
     @Test
-    public void shouldThrowExceptionForNegative(){
-        int number=-1;
-        assertThatThrownBy(()->fizzBuzz.play(number))
+    public void shouldThrowExceptionForNegative() {
+        int number = -1;
+        assertThatThrownBy(() -> fizzBuzz.play(number))
                 .isInstanceOf(ArithmeticException.class)
                 .hasMessage("Number cannot be equal 0 or negative");
+    }
+
+
+    @Test
+    public void shouldReturnCorrectValue() {
+
+        int negative = -1;
+        int zero = 0;
+
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThatThrownBy(() -> fizzBuzz.play(negative))
+                .isInstanceOf(IllegalArgumentException.class);
+        softly.assertThatThrownBy(() -> fizzBuzz.play(zero))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Number cannot be equal 0 or negative");
+        softly.assertAll();
     }
 
 }
