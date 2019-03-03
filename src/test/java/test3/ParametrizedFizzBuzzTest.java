@@ -3,9 +3,7 @@ package test3;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.*;
 import test2.FizzBuzz;
 
 import java.util.stream.Stream;
@@ -43,8 +41,8 @@ public class ParametrizedFizzBuzzTest {
 
     }
 
-    private static Stream<Integer> dataProvider(){
-        return Stream.of(5,20,110,205,10000);
+    private static Stream<Integer> dataProvider() {
+        return Stream.of(5, 20, 110, 205, 10000);
     }
 
     @DisplayName("Should return expected value")
@@ -57,13 +55,22 @@ public class ParametrizedFizzBuzzTest {
 
     }
 
-    private static Stream<Arguments> argumentsProvider(){
+    private static Stream<Arguments> argumentsProvider() {
         return Stream.of(
-                Arguments.arguments(1,"1"),
-                Arguments.arguments(3,"Fizz!"),
-                Arguments.arguments(5,"Buzz!"),
-                Arguments.arguments(15,"FizzBuzz!")
-                );
+                Arguments.arguments(1, "1"),
+                Arguments.arguments(3, "Fizz!"),
+                Arguments.arguments(5, "Buzz!"),
+                Arguments.arguments(15, "FizzBuzz!")
+        );
+    }
+
+    @DisplayName("Should return expected value from CSV")
+    @ParameterizedTest(name = "{index} - for {0} should return {1}")
+    @CsvFileSource(resources = "/test_data.csv",numLinesToSkip = 1)
+    public void shouldReturnExpectedValueFormCSV(int number, String expectedResult) {
+        String actualResult = fizzBuzz.play(number);
+        assertEquals(expectedResult, actualResult);
+
     }
 
 }
