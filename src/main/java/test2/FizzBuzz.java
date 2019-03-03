@@ -2,7 +2,7 @@ package test2;
 
 public class FizzBuzz {
 
-    public static String play(int number) {
+    public String play(int number) {
 
         if (number <= 0) {
             throw new ArithmeticException("Number cannot be equal 0 or negative");

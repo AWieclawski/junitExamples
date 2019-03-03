@@ -6,7 +6,7 @@ public class MainToTests {
 
 //            System.out.println("Hello World!");
 
-            System.out.println(FizzBuzz.play(90));
+//            System.out.println(FizzBuzz.play(90));
 
 
         }

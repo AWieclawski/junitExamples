@@ -23,7 +23,7 @@ class FizzBuzzTest {
 
         int test = 3;
 
-        String result = FizzBuzz.play(test);
+        String result = fizzBuzz.play(test);
 
         assertEquals(result, "Fizz!");
 
@@ -35,7 +35,7 @@ class FizzBuzzTest {
 
         int test = 5;
 
-        String result = FizzBuzz.play(test);
+        String result = fizzBuzz.play(test);
 
         assertEquals(result, "Buzz!");
 
@@ -47,7 +47,7 @@ class FizzBuzzTest {
 
         int test = 3 * 5;
 
-        String result = FizzBuzz.play(test);
+        String result = fizzBuzz.play(test);
 
         assertEquals(result, "FizzBuzz!");
 
@@ -59,7 +59,7 @@ class FizzBuzzTest {
 
         int test = 2;
 
-        String result = FizzBuzz.play(test);
+        String result = fizzBuzz.play(test);
 
         assertEquals(result, Integer.toString(test));
 
@@ -71,7 +71,7 @@ class FizzBuzzTest {
 
         final int test = 0;
 
-        Assertions.assertThrows(ArithmeticException.class, () -> FizzBuzz.play(test));
+        Assertions.assertThrows(ArithmeticException.class, () -> fizzBuzz.play(test));
 
     }
 
